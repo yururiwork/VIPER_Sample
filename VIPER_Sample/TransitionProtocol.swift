@@ -8,7 +8,7 @@
 
 import UIKit
 
-protocol TransitionProtocol where Self: UIViewController {
+protocol TransitionProtocol: class {
     func pushViewController(_ viewController: UIViewController, animated: Bool)
     func popViewController(animated: Bool)
     func popToViewController(_ viewController: UIViewController, animated: Bool)
@@ -17,7 +17,7 @@ protocol TransitionProtocol where Self: UIViewController {
     func dismiss(animated: Bool, completion: (() -> Void))
 }
 
-extension TransitionProtocol {
+extension TransitionProtocol where Self: UIViewController {
     
     func pushViewController(_ viewController: UIViewController, animated: Bool) {
         guard let navigationController = self.navigationController else {
